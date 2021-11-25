@@ -19,9 +19,6 @@
   </a>
 </div>
 
-<div align="center">
-  <sub>Created by <a href="https://twitter.com/KovskyD">Johan Petrikovsky</a> build  <a href="https://github.com/jpedroschmitz/typescript-nextjs-starter/graphs/contributors">wonderful contributors</a>.</sub>
-</div>
 
 <br />
 
