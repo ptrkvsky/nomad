@@ -1,9 +1,10 @@
 import { useGetTypeObjetsQuery } from '@/features/messagerie/api';
+import FormMessagerie from '@/features/messagerie/components/FormMessagerie';
 import { Typography, Container } from '@mui/material';
 import Head from 'next/head';
 
 export default function Messagerie() {
-  const { data, isError } = useGetTypeObjetsQuery();
+  const { data } = useGetTypeObjetsQuery();
   console.log(data);
   return (
     <div>
@@ -17,6 +18,7 @@ export default function Messagerie() {
           <Typography variant="h3" sx={{ mt: 4 }} component="div" gutterBottom>
             Messages
           </Typography>
+          <FormMessagerie />
         </Container>
       </div>
     </div>
