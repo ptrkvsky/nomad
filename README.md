@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/26466516/141659551-d7ba5630-7200-46fe-863b-87818dae970a.png" alt="Next.js TypeScript Starter">
+  <img src="https://nomad.ads31.com/static/media/logo.add6073d.svg" alt="Nomad Messagerie">
 </p>
 
 <br />
