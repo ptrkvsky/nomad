@@ -4,7 +4,7 @@
 
 <br />
 
-<div align="center"><strong>Non-opinionated TypeScript starter for Next.js</strong></div>
+<div align="center"><strong>Refonte de la messsagerie Nomad</strong></div>
 <div align="center">Highly scalable foundation with the best DX. All the tools you need to build your next project.</div>
 
 <br />
