@@ -4,16 +4,28 @@ import TextField from '@mui/material/TextField';
 import { Controller, useFormContext } from 'react-hook-form';
 
 const InputObjet: FunctionComponent = () => {
-  const { control } = useFormContext();
+  const { control, formState } = useFormContext();
 
   return (
-    <FormControl fullWidth sx={{ marginTop: 4 }}>
+    <FormControl
+      fullWidth
+      sx={{ marginTop: 4 }}
+      error={!!formState.errors.objet}
+    >
       <Controller
         name="objet"
         control={control}
         defaultValue=""
         render={({ field }) => (
-          <TextField id="objet" label="Objet" variant="outlined" {...field} />
+          <TextField
+            error={!!formState.errors.objet}
+            helperText={!!formState.errors.objet && `L'objet est obligatoire.`}
+            id="objet"
+            placeholder="Objet du message"
+            label="Objet"
+            variant="outlined"
+            {...field}
+          />
         )}
       />
     </FormControl>

@@ -1,7 +1,7 @@
 import {
   TypeObjetBack,
   TypeObjetFront,
-} from '@/features/messagerie/interfaces/typeObjet';
+} from '@/features/messagerie/interfaces';
 
 export const typesObjetsBackToFront = (
   typesObjets: TypeObjetBack[],

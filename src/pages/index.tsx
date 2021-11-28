@@ -14,6 +14,10 @@ export default function Home() {
           <Typography variant="h3" sx={{ mt: 4 }} component="div" gutterBottom>
             Messages
           </Typography>
+          <p>
+            La liste des messages n&apos;est pas encore disponible,
+            <br /> en attendant vous pouvez ajouter un message via le menu
+          </p>
         </Container>
       </div>
     </div>

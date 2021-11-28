@@ -19,11 +19,23 @@ interface MyAppProps extends AppProps {
 }
 
 export default function MyApp(props: MyAppProps) {
+  const styles = [
+    `color: white`,
+    `background: hotpink`,
+    `font-size: 20px`,
+    `padding: 6px 8px`,
+  ].join(`;`);
+
+  const message = `SUPER CETTE MESSAGERIE`;
+
+  // 3. Using the styles and message variable
+  console.log(`%c%s`, styles, message);
+
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>My page</title>
+        <title>Nomad</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Provider store={store}>

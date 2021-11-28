@@ -1,47 +1,31 @@
-import { Typography, AppBar, Toolbar, Button, Link } from '@mui/material';
+import { Typography, AppBar, Toolbar, Link } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 
 const Header: FunctionComponent = () => {
   return (
     <AppBar
       position="static"
-      color="primary"
+      color="secondary"
       elevation={0}
       sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
     >
       <Toolbar sx={{ flexWrap: `wrap` }}>
         <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          Nomad
+          <Link
+            href="/"
+            sx={{ my: 1, mx: 1.5, textDecoration: `none`, color: `#FFF` }}
+          >
+            NOMAD
+          </Link>
         </Typography>
         <nav>
           <Link
-            variant="button"
-            color="text.primary"
-            href="/test"
-            sx={{ my: 1, mx: 1.5 }}
+            href="/messagerie"
+            sx={{ my: 1, mx: 1.5, textDecoration: `none`, color: `#FFF` }}
           >
-            Features
-          </Link>
-          <Link
-            variant="button"
-            color="text.primary"
-            href="/test"
-            sx={{ my: 1, mx: 1.5 }}
-          >
-            Enterprise
-          </Link>
-          <Link
-            variant="button"
-            color="text.primary"
-            href="/test"
-            sx={{ my: 1, mx: 1.5 }}
-          >
-            Support
+            Ajouter un message
           </Link>
         </nav>
-        <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-          Login
-        </Button>
       </Toolbar>
     </AppBar>
   );

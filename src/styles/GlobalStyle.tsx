@@ -6,7 +6,6 @@ const GlobalStyles = () => {
       styles={css`
         body {
           background-color: #f9fafc;
-          color: #121828;
           min-height: 100vh;
           transition-duration: 0.2s;
           transition-property: background-color, color;

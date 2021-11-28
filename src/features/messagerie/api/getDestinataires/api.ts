@@ -6,10 +6,10 @@ import {
 } from '@reduxjs/toolkit/dist/query';
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 import {
-  TypeObjetBack,
-  TypeObjetFront,
-} from '@/features/messagerie/interfaces/typeObjet';
-import { typesObjetsBackToFront } from './adapter';
+  DestinataireBack,
+  DestinataireFront,
+} from '@/features/messagerie/interfaces';
+import { destinatairesBackToFront } from './adapter';
 
 const getTypesObjets = (
   build: EndpointBuilder<
@@ -25,10 +25,11 @@ const getTypesObjets = (
     'api'
   >,
 ) =>
-  build.query<TypeObjetFront[], void>({
-    query: () => `/messagerie/types-objets`,
-    transformResponse: (response: TypeObjetBack[]) => {
-      return typesObjetsBackToFront(response);
+  build.query<DestinataireFront[], string>({
+    query: (idTypeObjet) =>
+      `messagerie/types-objets/${idTypeObjet}/destinataires?auteur=462118`,
+    transformResponse: (response: DestinataireBack[]) => {
+      return destinatairesBackToFront(response);
     },
   });
 

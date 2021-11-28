@@ -1,2 +1,3 @@
-export * from './formMessagerieValues';
+export * from './destinataire';
 export * from './typeObjet';
+export * from './message';

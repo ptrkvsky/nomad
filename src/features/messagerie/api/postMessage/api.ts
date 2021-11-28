@@ -5,13 +5,9 @@ import {
   FetchBaseQueryMeta,
 } from '@reduxjs/toolkit/dist/query';
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
-import {
-  TypeObjetBack,
-  TypeObjetFront,
-} from '@/features/messagerie/interfaces/typeObjet';
-import { typesObjetsBackToFront } from './adapter';
+import { Message } from '@/features/messagerie/interfaces';
 
-const getTypesObjets = (
+const postMessage = (
   build: EndpointBuilder<
     BaseQueryFn<
       string | FetchArgs,
@@ -25,11 +21,12 @@ const getTypesObjets = (
     'api'
   >,
 ) =>
-  build.query<TypeObjetFront[], void>({
-    query: () => `/messagerie/types-objets`,
-    transformResponse: (response: TypeObjetBack[]) => {
-      return typesObjetsBackToFront(response);
-    },
+  build.mutation<Message, Message>({
+    query: (param) => ({
+      url: `/visites/2417111/messages`,
+      method: `POST`,
+      body: param,
+    }),
   });
 
-export default getTypesObjets;
+export default postMessage;

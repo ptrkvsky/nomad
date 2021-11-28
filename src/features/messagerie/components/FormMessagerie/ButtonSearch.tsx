@@ -1,9 +1,17 @@
-import { FunctionComponent, useState } from 'react';
-import IconButton from '@mui/material/IconButton';
+import React, { FunctionComponent, useState } from 'react';
+import Button from '@mui/material/Button';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import DialogDestinataires from './DialogDestinataires';
 
-const ButtonSearch: FunctionComponent = () => {
+interface Props {
+  selectValue: any;
+  setSelectValue: React.Dispatch<any>;
+}
+
+const ButtonSearch: FunctionComponent<Props> = ({
+  selectValue,
+  setSelectValue,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -14,12 +22,27 @@ const ButtonSearch: FunctionComponent = () => {
     setIsOpen(false);
   };
 
+  const handleOk = (itemsSelected: any) => {
+    setIsOpen(false);
+    setSelectValue([...selectValue, ...itemsSelected]);
+  };
+
   return (
     <>
-      <IconButton onClick={handleOpen} aria-label="delete" size="large">
-        <PersonSearchIcon fontSize="large" />
-      </IconButton>
-      <DialogDestinataires handleClose={handleClose} isOpen={isOpen} />
+      <Button
+        onClick={handleOpen}
+        aria-label="delete"
+        size="small"
+        variant="outlined"
+        startIcon={<PersonSearchIcon fontSize="small" />}
+      >
+        Recherche avancee
+      </Button>
+      <DialogDestinataires
+        handleClose={handleClose}
+        handleOk={handleOk}
+        isOpen={isOpen}
+      />
     </>
   );
 };

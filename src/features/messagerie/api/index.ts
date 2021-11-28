@@ -1,11 +1,19 @@
-import { baseApi } from '@/app/baseApi';
-import getTypeObjets from './getTypeObjet/api';
+import { baseApi } from '@/services/baseApi';
+import getTypesObjets from './getTypeObjet/api';
+import getDestinataires from './getDestinataires/api';
+import postMessage from './postMessage/api';
 
 export const messagerieSlice = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getTypeObjets: getTypeObjets(build),
+    getTypesObjets: getTypesObjets(build),
+    getDestinataires: getDestinataires(build),
+    postMessage: postMessage(build),
   }),
   overrideExisting: false,
 });
 
-export const { useGetTypeObjetsQuery } = messagerieSlice;
+export const {
+  useGetTypesObjetsQuery,
+  useLazyGetDestinatairesQuery,
+  usePostMessageMutation,
+} = messagerieSlice;

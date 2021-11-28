@@ -1,17 +1,25 @@
 import React, { FunctionComponent } from 'react';
-import { useGetTypeObjetsQuery } from '@/features/messagerie/api';
+import { TypeObjetFront } from '@/features/messagerie/interfaces';
+import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Controller, useFormContext } from 'react-hook-form';
 
-const SelectTypeObjet: FunctionComponent = () => {
-  const { control } = useFormContext();
-  const { data: typesObjets } = useGetTypeObjetsQuery();
+interface Props {
+  typesObjets: TypeObjetFront[] | undefined;
+}
+
+const SelectTypeObjet: FunctionComponent<Props> = ({ typesObjets }) => {
+  const { control, setValue, formState } = useFormContext();
+
+  const handleChangeTypeObjet = (event: any) => {
+    setValue(`typeObjet`, event.target.value);
+  };
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth error={!!formState.errors.typeObjet}>
       <InputLabel id="typeObjet-label">Type Objet</InputLabel>
       <Controller
         name="typeObjet"
@@ -23,6 +31,8 @@ const SelectTypeObjet: FunctionComponent = () => {
             labelId="typeObjet"
             id="typesObjet"
             label="Type Objet"
+            error={!!formState.errors.typeObjet}
+            onChange={handleChangeTypeObjet}
           >
             {typesObjets &&
               typesObjets.map((typeObjet) => (
@@ -36,6 +46,9 @@ const SelectTypeObjet: FunctionComponent = () => {
           </Select>
         )}
       />
+      {!!formState.errors.typeObjet && (
+        <FormHelperText>Le type d&apos;objet est obligatoire</FormHelperText>
+      )}
     </FormControl>
   );
 };
