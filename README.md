@@ -5,7 +5,6 @@
 <br />
 
 <div align="center"><strong>Refonte de la messsagerie Nomad</strong></div>
-<div align="center">Highly scalable foundation with the best DX. All the tools you need to build your next project.</div>
 
 <br />
 
@@ -25,36 +24,15 @@
 - ⚙️ EditorConfig - Maintain consistent coding styles across editors and IDEs
 - 🗂 Path Mapping — Import components or images using the `@` prefix
 
-## Quick Start
+## Demarrer le projet
 
-The best way to start with this template is using [Create Next App](https://nextjs.org/docs/api-reference/create-next-app).
-
-```
-yarn create next-app -e https://github.com/jpedroschmitz/typescript-nextjs-starter
-# or
-npx create-next-app -e https://github.com/jpedroschmitz/typescript-nextjs-starter
-```
-
-### Development
-
-To start the project locally, run:
+Pour demarrer le projet:
 
 ```bash
 yarn dev
 ```
 
-Open `http://localhost:3000` with your browser to see the result.
-
-
-## Showcase
-
-List of websites that started off with Next.js TypeScript Starter:
-
-- [dowhile.io](https://dowhile.io)
-- [graphcms.com](https://graphcms.com)
-- [mobg.com.br](https://mobg.com.br)
-- [nextlevelweek.com](https://nextlevelweek.com)
-- [rocketseat.com.br](https://www.rocketseat.com.br)
+Ouvrir `http://localhost:3000` dans votre navigateur.
 
 ## Documentation
 
@@ -63,8 +41,9 @@ List of websites that started off with Next.js TypeScript Starter:
 - Node.js >= 12.22.0
 - Yarn 1 (Classic)
 
-### Directory Structure
+### Structure des dossiers
 
+#### Dossiers principau
 - [`.github`](.github) — GitHub configuration including the CI workflow.<br>
 - [`.husky`](.husky) — Husky configuration and hooks.<br>
 - [`public`](./public) — Static assets such as robots.txt, images, and favicon.<br>
@@ -82,7 +61,7 @@ List of websites that started off with Next.js TypeScript Starter:
 
 ### Path Mapping
 
-TypeScript are pre-configured with custom path mappings. To import components or files, use the `@` prefix.
+TypeScript est pre-configure avec un mapping custom.Pour importer des composants ou des fichiers, utiliser le `@` prefix.
 
 ```tsx
 import { Button } from '@/components/Button';
@@ -91,10 +70,4 @@ import { Button } from '@/components/Button';
 import avatar from '@/public/avatar.png';
 ```
 
-### Switch to npm
 
-By default, this starter uses Yarn 1 (Classic), but this choice is yours. If you'd like to switch to npm, delete the `yarn.lock` file, install the dependencies with `npm install`, and change the CI workflows, Husky Git hooks, and lint-staged steps to use npm commands.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for more information.
