@@ -39,7 +39,7 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
   const schema = yup.object().shape({
     typeObjet: yup.string().required(),
     objet: yup.string().required(),
-    destinataires: yup.array().required(),
+    destinataires: yup.array().of(yup.string()),
     corps: yup.string().required(),
   });
 
