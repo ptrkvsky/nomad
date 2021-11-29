@@ -43,15 +43,22 @@ Ouvrir `http://localhost:3000` dans votre navigateur.
 
 ### Structure des dossiers
 
-#### Dossiers principau
+#### Dossiers principaux
 - [`.github`](.github) — GitHub configuration including the CI workflow.<br>
 - [`.husky`](.husky) — Husky configuration and hooks.<br>
 - [`public`](./public) — Static assets such as robots.txt, images, and favicon.<br>
 - [`src`](./src) — Application source code, including pages, components, styles.
 - [`src/app`](./src/app) — Fichiers globaux à l'application comme la definition du store.
 - [`src/components`](./src/components) — Composants génériques à l'application. Ex: Header.
-- [`src/features`](./src/components) — Logiques liées à une feature, ex la messagerie, la tournée, la fiche appareil etc... 
-- 
+- [`src/features`](./src/features) — Logiques liées à une feature, ex la messagerie, la tournée, la fiche appareil etc... Chaque feature dispose de 3 dossiers 
+ - `api` - Appels backend avec les adapters lié à la feature.
+ - `components` - Composants liés à la feature.
+ - `interfaces`- Interfaces liées à la feature.
+- [`src/interfaces`](./src/components) - Interfaces globales à l'application 
+- [`src/libs`](./src/libs) - Librairies externe 
+- [`src/pages`](./src/pages) - Router NextJS 
+- [`src/services`](./src/pages) - Appels backend génériques à l'application, ex: les tiers 
+- [`src/styles`](./src/styles) - Styles génériques de l'application, `theme`, `globalStyle` etc.. 
 
 ### Scripts
 
@@ -70,7 +77,7 @@ TypeScript est pre-configure avec un mapping custom.Pour importer des composants
 ```tsx
 import { Button } from '@/components/Button';
 
-// To import images or other files from the public folder
+// Importer des images ou d'autres fichiers du dossier public
 import avatar from '@/public/avatar.png';
 ```
 
