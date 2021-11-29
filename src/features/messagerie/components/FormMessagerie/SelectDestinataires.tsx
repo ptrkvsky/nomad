@@ -30,7 +30,6 @@ const SelectTypeObjet: FunctionComponent = () => {
   useEffect(() => {
     if (idTypeObjet) {
       getDestinataires(idTypeObjet);
-
       setSelectValue(destinataires ? destinataires : []);
       setValue(`destinataires`, destinataires ? destinataires : []);
       trigger(`destinataires`);
