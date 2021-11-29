@@ -13,7 +13,7 @@ const SelectTypeObjet: FunctionComponent = () => {
   const [selectValue, setSelectValue] = useState<any>([]); // Element selectionne dans le select
   const [inputValue, setInputValue] = useState(``); // Valeur de la recherche
   const [options, setOptions] = useState<any>([]);
-  const { control, setValue, formState } = useFormContext();
+  const { control, setValue, formState, trigger } = useFormContext();
 
   const idTypeObjet = useWatch({ name: `typeObjet` });
 
@@ -33,6 +33,7 @@ const SelectTypeObjet: FunctionComponent = () => {
 
       setSelectValue(destinataires ? destinataires : []);
       setValue(`destinataires`, destinataires ? destinataires : []);
+      trigger(`destinataires`);
     }
   }, [getDestinataires, idTypeObjet, destinataires, setValue]);
 
@@ -79,8 +80,6 @@ const SelectTypeObjet: FunctionComponent = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectValue]);
-
-  console.log(formState.errors);
 
   return (
     <>

@@ -67,6 +67,8 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
     postMessage(message);
   };
 
+  console.log(methods.formState, methods.formState.errors);
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>

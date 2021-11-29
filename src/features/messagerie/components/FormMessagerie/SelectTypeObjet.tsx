@@ -12,11 +12,7 @@ interface Props {
 }
 
 const SelectTypeObjet: FunctionComponent<Props> = ({ typesObjets }) => {
-  const { control, setValue, formState } = useFormContext();
-
-  const handleChangeTypeObjet = (event: any) => {
-    setValue(`typeObjet`, event.target.value);
-  };
+  const { control, formState } = useFormContext();
 
   return (
     <FormControl fullWidth error={!!formState.errors.typeObjet}>
@@ -32,7 +28,6 @@ const SelectTypeObjet: FunctionComponent<Props> = ({ typesObjets }) => {
             id="typesObjet"
             label="Type Objet"
             error={!!formState.errors.typeObjet}
-            onChange={handleChangeTypeObjet}
           >
             {typesObjets &&
               typesObjets.map((typeObjet) => (
