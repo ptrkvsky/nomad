@@ -51,9 +51,9 @@ Ouvrir `http://localhost:3000` dans votre navigateur.
 - [`src/app`](./src/app) — Fichiers globaux à l'application comme la definition du store.
 - [`src/components`](./src/components) — Composants génériques à l'application. Ex: Header.
 - [`src/features`](./src/features) — Logiques liées à une feature, ex la messagerie, la tournée, la fiche appareil etc... Chaque feature dispose de 3 dossiers 
- - `api` - Appels backend avec les adapters lié à la feature.
- - `components` - Composants liés à la feature.
- - `interfaces`- Interfaces liées à la feature.
+  - `api` - Appels backend avec les adapters lié à la feature.
+  - `components` - Composants liés à la feature.
+  - `interfaces`- Interfaces liées à la feature.
 - [`src/interfaces`](./src/components) - Interfaces globales à l'application 
 - [`src/libs`](./src/libs) - Librairies externe 
 - [`src/pages`](./src/pages) - Router NextJS 
