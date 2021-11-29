@@ -80,6 +80,8 @@ const SelectTypeObjet: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectValue]);
 
+  console.log(formState.errors);
+
   return (
     <>
       {
