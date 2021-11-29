@@ -4,7 +4,7 @@
 
 <br />
 
-<div align="center"><strong>Refonte de la messsagerie Nomad</strong></div>
+<div align="center"><strong>Ajout de message dans la messagerie Nomad</strong></div>
 
 <br />
 
@@ -48,6 +48,10 @@ Ouvrir `http://localhost:3000` dans votre navigateur.
 - [`.husky`](.husky) — Husky configuration and hooks.<br>
 - [`public`](./public) — Static assets such as robots.txt, images, and favicon.<br>
 - [`src`](./src) — Application source code, including pages, components, styles.
+- [`src/app`](./src/app) — Fichiers globaux à l'application comme la definition du store.
+- [`src/components`](./src/components) — Composants génériques à l'application. Ex: Header.
+- [`src/features`](./src/components) — Logiques liées à une feature, ex la messagerie, la tournée, la fiche appareil etc... 
+- 
 
 ### Scripts
 
