@@ -11,10 +11,10 @@ import {
   useGetTypesObjetsQuery,
   usePostMessageMutation,
 } from '@/features/messagerie/api';
-import SelectTypeObjet from './SelectTypeObjet';
-import SelectDestinataires from './SelectDestinataires';
-import InputObjet from './InputObjet';
-import TextareaCorps from './TextareaCorps';
+import SelectTypeProduits from './SelectTypeProduits';
+import SelectFamilleProduits from './SelectFamilleProduits';
+import { Box } from '@mui/material';
+import SelectModeles from './SelectModeles';
 
 interface FormMessagerieProps {
   message?: any;
@@ -28,7 +28,7 @@ interface Destinataire {
   codeAnnuaire: string;
 }
 
-interface FormMessagerieValues {
+interface FormRechercheAppareil {
   typeObjet: string;
   objet: string;
   destinataires: Destinataire[];
@@ -37,10 +37,8 @@ interface FormMessagerieValues {
 
 const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
   const schema = yup.object().shape({
-    typeObjet: yup.string().required(),
-    objet: yup.string().required(),
-    destinataires: yup.array().of(yup.object()).required(),
-    corps: yup.string().required(),
+    typeProduit: yup.string().required(),
+    famille: yup.string().required(),
   });
 
   const methods = useForm<FormMessagerieProps>({
@@ -53,18 +51,8 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
   const [postMessage, { isLoading: isLoadingPostMessage, isSuccess, isError }] =
     usePostMessageMutation();
 
-  const onSubmit: SubmitHandler<FormMessagerieValues> = (formValues) => {
-    const message: Message = {
-      typeObjet: {
-        typeObjetID: formValues.typeObjet,
-      },
-      sObjet: formValues.objet,
-      sMessage: formValues.corps,
-      tDestinatairePrincipal: formValues.destinataires.map((destinataire) => ({
-        tiersID: destinataire.idTiers,
-      })),
-    };
-    postMessage(message);
+  const onSubmit: SubmitHandler<FormRechercheAppareil> = (formValues) => {
+    console.log(formValues);
   };
 
   return (
@@ -73,7 +61,7 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
         {isSuccess && (
           <Alert sx={{ mb: 4 }} severity="success">
             <AlertTitle>Victoire</AlertTitle>
-            Votre message a ete enregistre avec succes —{` `}
+            Votre recherche a ete enregistre avec succes —{` `}
             <strong>et panache</strong>
           </Alert>
         )}
@@ -85,18 +73,22 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
           </Alert>
         )}
 
-        <SelectTypeObjet typesObjets={typesObjets} />
-        <InputObjet />
-        <SelectDestinataires />
-        <TextareaCorps typesObjets={typesObjets} />
+        <SelectTypeProduits />
+        <Box sx={{ mt: 2 }}>
+          <SelectFamilleProduits />
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <SelectModeles />
+        </Box>
+
         <Button
-          disabled={isLoadingPostMessage}
+          // disabled={isLoadingPostMessage}
           variant="contained"
           sx={{ marginTop: 4 }}
           endIcon={<SendIcon />}
           type="submit"
         >
-          Envoyer le message
+          Rechercher
         </Button>
       </form>
     </FormProvider>
