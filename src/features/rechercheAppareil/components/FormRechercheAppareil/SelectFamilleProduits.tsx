@@ -1,11 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import FormHelperText from '@mui/material/FormHelperText';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+
+import {
+  Box,
+  Select,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  FormHelperText,
+} from '@mui/material';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { useGetFamillesProduitQuery } from '../../api';
+import SelectSousFamilleProduits from './SelectSousFamilleProduits';
 
 const SelectFamilleProduits: FunctionComponent = () => {
   const { control, formState } = useFormContext();
@@ -19,36 +24,47 @@ const SelectFamilleProduits: FunctionComponent = () => {
   const { data: famillesProduits } = useGetFamillesProduitQuery(idTypeProduit);
 
   return (
-    <FormControl fullWidth error={!!formState.errors.typeObjet}>
-      <InputLabel id="typeObjet-label">Famille</InputLabel>
-      <Controller
-        name="famille"
-        control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <Select
-            {...field}
-            labelId="famille"
-            id="famille"
-            label="Famille"
-            error={!!formState.errors.typeObjet}
-          >
-            {famillesProduits &&
-              famillesProduits.map((familleProduit) => (
-                <MenuItem
-                  key={familleProduit.sPKFamille}
-                  value={familleProduit.sPKFamille}
-                >
-                  {familleProduit.sLibelle}
-                </MenuItem>
-              ))}
-          </Select>
-        )}
-      />
-      {!!formState.errors.typeObjet && (
-        <FormHelperText>Le type de famille est obligatoire</FormHelperText>
+    <>
+      {famillesProduits && famillesProduits.length > 0 && (
+        <FormControl fullWidth error={!!formState.errors.famille}>
+          <InputLabel id="famille-label">Famille</InputLabel>
+          <Controller
+            name="famille"
+            control={control}
+            defaultValue=""
+            shouldUnregister
+            render={({ field }) => (
+              <Select
+                {...field}
+                labelId="famille"
+                id="famille"
+                label="Famille"
+                error={!!formState.errors.typeObjet}
+              >
+                <MenuItem value="">Aucune valeur selectionnee</MenuItem>
+                {famillesProduits.map((familleProduit) => (
+                  <MenuItem
+                    key={familleProduit.sPKFamille}
+                    value={familleProduit.sPKFamille}
+                  >
+                    {familleProduit.sLibelle}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+          {!!formState.errors.typeObjet && (
+            <FormHelperText>Le type de famille est obligatoire</FormHelperText>
+          )}
+        </FormControl>
       )}
-    </FormControl>
+
+      {famillesProduits && famillesProduits?.length > 0 && (
+        <Box sx={{ mt: 2 }}>
+          <SelectSousFamilleProduits famillesProduits={famillesProduits} />
+        </Box>
+      )}
+    </>
   );
 };
 

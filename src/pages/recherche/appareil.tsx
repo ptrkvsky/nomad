@@ -1,4 +1,5 @@
 import FormRechercheAppareil from '@/features/rechercheAppareil/components/FormRechercheAppareil';
+import TableResult from '@/features/rechercheAppareil/components/FormRechercheAppareil/TableResult';
 import { Typography, Container, Box } from '@mui/material';
 import Head from 'next/head';
 

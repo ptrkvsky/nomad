@@ -8,7 +8,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { useGetTypesProduitsQuery } from '../../api';
 
 const SelecttypeProduit: FunctionComponent = () => {
-  const { control, formState } = useFormContext();
+  const { control, formState, resetField } = useFormContext();
   const { data: typesProduits } = useGetTypesProduitsQuery(`M`);
 
   return (
@@ -17,7 +17,7 @@ const SelecttypeProduit: FunctionComponent = () => {
       <Controller
         name="typeProduit"
         control={control}
-        defaultValue=""
+        shouldUnregister
         render={({ field }) => (
           <Select
             {...field}
@@ -35,6 +35,7 @@ const SelecttypeProduit: FunctionComponent = () => {
                   {typeProduit.sLibelle}
                 </MenuItem>
               ))}
+            <MenuItem value="">Aucune valeur selectionnee</MenuItem>
           </Select>
         )}
       />

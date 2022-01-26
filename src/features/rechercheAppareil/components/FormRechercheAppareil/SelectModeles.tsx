@@ -21,23 +21,30 @@ const SelectModeles: FunctionComponent = () => {
     name: `famille`,
   });
 
+  const idSousFamille = useWatch({
+    control,
+    name: `sousFamille`,
+  });
+
   const [postModeles, { isLoading, data: modelesProduits }] =
     useGetModelesMutation();
 
   useEffect(() => {
     if (idFamilleProduit && idTypeProduit) {
       postModeles({
-        idtypeproduit: idTypeProduit,
-        idfamille: idFamilleProduit,
+        typeProduitID: idTypeProduit,
+        familleID: idFamilleProduit,
+        sousFamilleID: idSousFamille ? idSousFamille : 0,
       });
     }
-  }, [idFamilleProduit, idTypeProduit, postModeles]);
-
-  console.log({ modelesProduits });
+  }, [idFamilleProduit, idTypeProduit, idSousFamille, postModeles]);
 
   return (
     <FormControl fullWidth error={!!formState.errors.typeObjet}>
-      <InputLabel id="model-label">Modele</InputLabel>
+      <InputLabel id="model-label">
+        {isLoading ? `Chargement en cours` : `Modele`}
+      </InputLabel>
+
       <Controller
         name="modele"
         control={control}
@@ -47,7 +54,7 @@ const SelectModeles: FunctionComponent = () => {
             {...field}
             labelId="modele"
             id="modele"
-            label="Modele"
+            label={isLoading ? `Chargement en cours` : `Modele`}
             error={!!formState.errors.typeObjet}
           >
             {modelesProduits &&
@@ -59,9 +66,11 @@ const SelectModeles: FunctionComponent = () => {
                   {modeleProduit.sLibelle}
                 </MenuItem>
               ))}
+            <MenuItem value="">Aucune valeur selectionnee</MenuItem>
           </Select>
         )}
       />
+
       {!!formState.errors.typeObjet && (
         <FormHelperText>Le type de famille est obligatoire</FormHelperText>
       )}

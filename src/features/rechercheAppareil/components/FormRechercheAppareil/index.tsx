@@ -7,14 +7,16 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import { Message } from '@/features/messagerie/interfaces';
-import {
-  useGetTypesObjetsQuery,
-  usePostMessageMutation,
-} from '@/features/messagerie/api';
+import { useGetTypesObjetsQuery } from '@/features/messagerie/api';
 import SelectTypeProduits from './SelectTypeProduits';
 import SelectFamilleProduits from './SelectFamilleProduits';
 import { Box } from '@mui/material';
 import SelectModeles from './SelectModeles';
+import InputNumSerie from './InputNumSerie';
+import { useGetAppareilsMutation } from '../../api';
+import { RechercheAppareil } from '../../interfaces/rechercheAppareil';
+import TableResult from './TableResult';
+import RadioDispo from './RadioDispo';
 
 interface FormMessagerieProps {
   message?: any;
@@ -29,10 +31,12 @@ interface Destinataire {
 }
 
 interface FormRechercheAppareil {
-  typeObjet: string;
-  objet: string;
-  destinataires: Destinataire[];
-  corps: string;
+  famille: string;
+  modele: string;
+  numSerie: string;
+  sousFamille: string;
+  typeProduit: string;
+  disponible: string;
 }
 
 const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
@@ -48,50 +52,72 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
   });
 
   const { data: typesObjets } = useGetTypesObjetsQuery();
-  const [postMessage, { isLoading: isLoadingPostMessage, isSuccess, isError }] =
-    usePostMessageMutation();
+  const [
+    getAppareils,
+    { isLoading: isLoadingGetAppareils, isSuccess, isError, data, error },
+  ] = useGetAppareilsMutation();
 
   const onSubmit: SubmitHandler<FormRechercheAppareil> = (formValues) => {
-    console.log(formValues);
+    console.log(`watch`, formValues);
+    const dataForBackend: RechercheAppareil = {
+      modeleID: formValues.modele,
+      familleID: formValues.famille,
+      sousFamilleID: formValues.sousFamille,
+      typeProduitID: formValues.typeProduit,
+      ref_sn: formValues.numSerie,
+      estDisponible: formValues.disponible,
+    };
+    getAppareils(dataForBackend);
   };
 
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
-        {isSuccess && (
-          <Alert sx={{ mb: 4 }} severity="success">
-            <AlertTitle>Victoire</AlertTitle>
-            Votre recherche a ete enregistre avec succes —{` `}
-            <strong>et panache</strong>
-          </Alert>
-        )}
+    <>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          {/* {isSuccess && (
+            <Alert sx={{ mb: 4 }} severity="success">
+              <AlertTitle>Victoire</AlertTitle>
+              Votre recherche a ete enregistre avec succes —{` `}
+              <strong>et panache</strong>
+            </Alert>
+          )} */}
 
-        {isError && (
-          <Alert sx={{ mb: 4 }} severity="error">
-            <AlertTitle>Terrible nouvelle</AlertTitle>
-            Une erreur est survenue pendant l&apos;envoie de votre message
-          </Alert>
-        )}
+          {isError && (
+            <Alert sx={{ mb: 4 }} severity="error">
+              <AlertTitle>Terrible nouvelle</AlertTitle>
+              Une erreur est survenue pendant l&apos;envoie de votre message
+            </Alert>
+          )}
 
-        <SelectTypeProduits />
-        <Box sx={{ mt: 2 }}>
-          <SelectFamilleProduits />
-        </Box>
-        <Box sx={{ mt: 2 }}>
-          <SelectModeles />
-        </Box>
+          <SelectTypeProduits />
+          <Box sx={{ mt: 2 }}>
+            <SelectFamilleProduits />
+          </Box>
+          <Box sx={{ mt: 2 }}>
+            <SelectModeles />
+          </Box>
+          <Box sx={{ mt: 2 }}>
+            <InputNumSerie />
+          </Box>
+          <Box sx={{ mt: 2 }}>
+            <RadioDispo />
+          </Box>
 
-        <Button
-          // disabled={isLoadingPostMessage}
-          variant="contained"
-          sx={{ marginTop: 4 }}
-          endIcon={<SendIcon />}
-          type="submit"
-        >
-          Rechercher
-        </Button>
-      </form>
-    </FormProvider>
+          <Button
+            // disabled={isLoadingPostMessage}
+            variant="contained"
+            sx={{ marginTop: 4 }}
+            endIcon={<SendIcon />}
+            type="submit"
+          >
+            Rechercher
+          </Button>
+        </form>
+      </FormProvider>
+      <Box sx={{ marginTop: 4 }}>
+        <TableResult isLoadingSearch={isLoadingGetAppareils} appareils={data} />
+      </Box>
+    </>
   );
 };
 

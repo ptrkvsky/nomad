@@ -1,4 +1,12 @@
 export interface RechercheModele {
-  idtypeproduit: string;
-  idfamille: string;
+  ref_lib?: string;
+  natures?: string[];
+  produitID?: 0;
+  familleID?: string;
+  sousFamilleID?: string;
+  estActif?: string;
+  typeProduitID?: string;
+  codeBarre?: string;
+  suiviTiers?: string;
+  typePrestationID?: string;
 }
