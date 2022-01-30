@@ -15,20 +15,9 @@ import SelectModeles from './SelectModeles';
 import InputNumSerie from './InputNumSerie';
 import { useGetAppareilsMutation } from '../../api';
 import { RechercheAppareil } from '../../interfaces/rechercheAppareil';
-import TableResult from './TableResult';
+import TableResult from '../TableAppareils';
 import RadioDispo from './RadioDispo';
-
-interface FormMessagerieProps {
-  message?: any;
-}
-
-interface Destinataire {
-  idTypeTiers: string;
-  idTiers: number;
-  nom: string;
-  prenom: string;
-  codeAnnuaire: string;
-}
+import SelectTypeLocalisation from './SelectTypeLocalisation';
 
 interface FormRechercheAppareil {
   famille: string;
@@ -37,28 +26,27 @@ interface FormRechercheAppareil {
   sousFamille: string;
   typeProduit: string;
   disponible: string;
+  typeLocalisation: string;
 }
 
-const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
+const FormMessagerie: FunctionComponent = () => {
   const schema = yup.object().shape({
     typeProduit: yup.string().required(),
     famille: yup.string().required(),
   });
 
-  const methods = useForm<FormMessagerieProps>({
+  const methods = useForm<FormRechercheAppareil>({
     mode: `onChange`,
     reValidateMode: `onChange`,
     resolver: yupResolver(schema),
   });
 
-  const { data: typesObjets } = useGetTypesObjetsQuery();
   const [
     getAppareils,
-    { isLoading: isLoadingGetAppareils, isSuccess, isError, data, error },
+    { isLoading: isLoadingGetAppareils, isError, data, error },
   ] = useGetAppareilsMutation();
 
   const onSubmit: SubmitHandler<FormRechercheAppareil> = (formValues) => {
-    console.log(`watch`, formValues);
     const dataForBackend: RechercheAppareil = {
       modeleID: formValues.modele,
       familleID: formValues.famille,
@@ -66,6 +54,7 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
       typeProduitID: formValues.typeProduit,
       ref_sn: formValues.numSerie,
       estDisponible: formValues.disponible,
+      typeLocalisationID: formValues.typeLocalisation,
     };
     getAppareils(dataForBackend);
   };
@@ -74,33 +63,34 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
     <>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          {/* {isSuccess && (
-            <Alert sx={{ mb: 4 }} severity="success">
-              <AlertTitle>Victoire</AlertTitle>
-              Votre recherche a ete enregistre avec succes —{` `}
-              <strong>et panache</strong>
-            </Alert>
-          )} */}
-
           {isError && (
             <Alert sx={{ mb: 4 }} severity="error">
+              {console.error(error)}
               <AlertTitle>Terrible nouvelle</AlertTitle>
               Une erreur est survenue pendant l&apos;envoie de votre message
             </Alert>
           )}
 
           <SelectTypeProduits />
+
           <Box sx={{ mt: 2 }}>
             <SelectFamilleProduits />
           </Box>
+
           <Box sx={{ mt: 2 }}>
             <SelectModeles />
           </Box>
+
           <Box sx={{ mt: 2 }}>
             <InputNumSerie />
           </Box>
+
           <Box sx={{ mt: 2 }}>
             <RadioDispo />
+          </Box>
+
+          <Box sx={{ mt: 2 }}>
+            <SelectTypeLocalisation />
           </Box>
 
           <Button

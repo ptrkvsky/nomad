@@ -15,15 +15,16 @@ const RadioDispo: FunctionComponent = () => {
         render={({ field }) => (
           <RadioGroup aria-label="disponible" {...field}>
             <FormControlLabel
-              value="true"
+              value="oui"
               control={<Radio />}
               label="Disponible"
             />
             <FormControlLabel
-              value="false"
+              value="non"
               control={<Radio />}
               label="Indisponible"
             />
+            <FormControlLabel value="tous" control={<Radio />} label="Tous" />
           </RadioGroup>
         )}
       />

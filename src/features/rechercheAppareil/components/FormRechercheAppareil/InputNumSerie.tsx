@@ -23,8 +23,8 @@ const InputNumSerie: FunctionComponent = () => {
           </>
         )}
       />
-      {!!formState.errors.typeProduit && (
-        <FormHelperText>Le type produit est obligatoire</FormHelperText>
+      {!!formState.errors.numSerie && (
+        <FormHelperText>Le numéro de série est obligatoire</FormHelperText>
       )}
     </FormControl>
   );

@@ -5,10 +5,9 @@ import {
   FetchBaseQueryMeta,
 } from '@reduxjs/toolkit/dist/query';
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
-import { RechercheAppareil } from '../../interfaces/rechercheAppareil';
-import { ResultatRechercheAppareil } from '../../interfaces/resulatRechercheAppareil';
+import { TypeLocalisation } from '@/features/rechercheAppareil/interfaces';
 
-const getAppareils = (
+const getTypesLocalisations = (
   build: EndpointBuilder<
     BaseQueryFn<
       string | FetchArgs,
@@ -22,12 +21,8 @@ const getAppareils = (
     'api'
   >,
 ) =>
-  build.mutation<ResultatRechercheAppareil[], RechercheAppareil>({
-    query: (param) => ({
-      url: `/appareils/recherche`,
-      method: `POST`,
-      body: param,
-    }),
+  build.query<TypeLocalisation[], void>({
+    query: () => `/types-localisations`,
   });
 
-export default getAppareils;
+export default getTypesLocalisations;

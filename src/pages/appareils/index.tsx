@@ -1,3 +1,4 @@
+import TemplateAppareil from '@/features/appareils/components/TemplateAppareil';
 import FormRechercheAppareil from '@/features/rechercheAppareil/components/FormRechercheAppareil';
 import TableResult from '@/features/rechercheAppareil/components/TableAppareils';
 import { Typography, Container, Box } from '@mui/material';
@@ -7,17 +8,17 @@ export default function Messagerie() {
   return (
     <div>
       <Head>
-        <title>Recherche Appareil - Nomad</title>
+        <title>Liste des appareils - Nomad</title>
         <meta name="description" content="Nomad" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
         <Container maxWidth="xl">
           <Typography variant="h3" sx={{ mt: 4 }} component="div" gutterBottom>
-            Rechercher un appareil
+            Liste des appareils
           </Typography>
           <Box sx={{ marginTop: 4 }}>
-            <FormRechercheAppareil />
+            <TemplateAppareil />
           </Box>
         </Container>
       </div>

@@ -63,6 +63,10 @@ const GlobalStyles = () => {
           font-family: var(--font-primary-bold);
         }
 
+        header a {
+          text-decoration: none;
+        }
+
         .container {
           max-width: 1480px;
           margin-left: auto;

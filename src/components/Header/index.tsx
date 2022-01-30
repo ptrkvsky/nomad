@@ -1,4 +1,5 @@
-import { Typography, AppBar, Toolbar, Link } from '@mui/material';
+import { Typography, AppBar, Toolbar } from '@mui/material';
+import Link from 'next/link';
 import React, { FunctionComponent } from 'react';
 
 const Header: FunctionComponent = () => {
@@ -9,22 +10,22 @@ const Header: FunctionComponent = () => {
       elevation={0}
       sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
     >
-      <Toolbar sx={{ flexWrap: `wrap` }}>
-        <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          <Link
-            href="/"
-            sx={{ my: 1, mx: 1.5, textDecoration: `none`, color: `#FFF` }}
-          >
-            NOMAD
-          </Link>
-        </Typography>
-        <nav>
-          <Link
-            href="/messagerie"
-            sx={{ my: 1, mx: 1.5, textDecoration: `none`, color: `#FFF` }}
-          >
-            Ajouter un message
-          </Link>
+      <Toolbar sx={{ flexWrap: `wrap`, justifyContent: `space-between` }}>
+        <Link href="/">
+          <a>
+            <Typography
+              variant="h6"
+              paragraph={false}
+              sx={{ my: 1, mx: 1.5, textDecoration: `none`, color: `#FFF` }}
+            >
+              Nomad
+            </Typography>
+          </a>
+        </Link>
+        <nav style={{ display: `flex`, gap: `8px` }}>
+          <Link href="/appareils">Liste des appareils</Link>
+          <Link href="/recherche/appareil">Rechercher un appareil</Link>
+          <Link href="/messagerie">Ajouter un message</Link>
         </nav>
       </Toolbar>
     </AppBar>

@@ -8,7 +8,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { useGetTypesProduitsQuery } from '../../api';
 
 const SelecttypeProduit: FunctionComponent = () => {
-  const { control, formState, resetField } = useFormContext();
+  const { control, formState } = useFormContext();
   const { data: typesProduits } = useGetTypesProduitsQuery(`M`);
 
   return (
@@ -22,8 +22,8 @@ const SelecttypeProduit: FunctionComponent = () => {
           <Select
             {...field}
             labelId="typeProduit"
-            id="typesObjet"
-            label="Type produit"
+            id="typeProduit"
+            label="Type de produit"
             error={!!formState.errors.typeProduit}
           >
             {typesProduits &&

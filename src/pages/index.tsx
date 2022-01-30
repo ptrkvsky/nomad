@@ -12,11 +12,11 @@ export default function Home() {
       <div>
         <Container maxWidth="xl">
           <Typography variant="h3" sx={{ mt: 4 }} component="div" gutterBottom>
-            Messages
+            Nomad
           </Typography>
           <p>
-            La liste des messages n&apos;est pas encore disponible,
-            <br /> en attendant vous pouvez ajouter un message via le menu
+            Consulter le menu pour ajouter un message ou rechercher un appareil
+            <br />
           </p>
         </Container>
       </div>
