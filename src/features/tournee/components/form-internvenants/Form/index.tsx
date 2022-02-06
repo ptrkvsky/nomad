@@ -56,8 +56,8 @@ const FormIntervenant: FunctionComponent = () => {
         <span className="highlight">le</span>
         <DatePickerIntervenant />
         <ButtonPrimary type="submit">
-          <SendIcon />
           Rechercher
+          <SendIcon />
         </ButtonPrimary>
       </FormStyle>
     </FormProvider>
