@@ -6,7 +6,7 @@ import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { ButtonPrimary, ButtonGhost } from '@/styles/atoms/Buttons';
-
+import EditIcon from '@mui/icons-material/Edit';
 interface Props {
   rdvOuVisite: VisiteAPI | RendezVousAPI;
 }
@@ -79,8 +79,8 @@ const TourneeItem = ({ rdvOuVisite }: Props) => {
 
         <Cta className="cta">
           <ButtonGhost type="button">
-            <PersonSearchIcon />
-            Dossier patient
+            <EditIcon />
+            Modifier
           </ButtonGhost>
           <ButtonPrimary type="button">
             <PersonSearchIcon />
