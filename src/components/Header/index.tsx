@@ -1,34 +1,30 @@
-import { Typography, AppBar, Toolbar } from '@mui/material';
-import Link from 'next/link';
 import React, { FunctionComponent } from 'react';
+import dayjs from 'dayjs';
+import 'dayjs/locale/fr';
+import MessageIcon from '@mui/icons-material/Message';
 
-const Header: FunctionComponent = () => {
+import { Icon } from '@/styles/atoms/Icon';
+import Link from 'next/link';
+import { Wrapper } from './style';
+
+interface Props {
+  title: React.ReactNode;
+}
+
+export const Header: FunctionComponent<Props> = ({ title }: Props) => {
   return (
-    <AppBar
-      position="static"
-      color="secondary"
-      elevation={0}
-      sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-    >
-      <Toolbar sx={{ flexWrap: `wrap`, justifyContent: `space-between` }}>
-        <Link href="/">
+    <Wrapper>
+      <div className="container">
+        <h1>{title}</h1>
+        <Link href="/messagerie">
           <a>
-            <Typography
-              variant="h6"
-              paragraph={false}
-              sx={{ my: 1, mx: 1.5, textDecoration: `none`, color: `#FFF` }}
-            >
-              Nomad
-            </Typography>
+            <Icon className="button">
+              <MessageIcon style={{ fill: `#FFF` }} />
+            </Icon>
           </a>
         </Link>
-        <nav style={{ display: `flex`, gap: `8px` }}>
-          <Link href="/appareils">Liste des appareils</Link>
-          <Link href="/recherche/appareil">Rechercher un appareil</Link>
-          <Link href="/messagerie">Ajouter un message</Link>
-        </nav>
-      </Toolbar>
-    </AppBar>
+      </div>
+    </Wrapper>
   );
 };
 

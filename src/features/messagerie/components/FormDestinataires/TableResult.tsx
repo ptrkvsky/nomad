@@ -1,8 +1,9 @@
 import { FunctionComponent } from 'react';
 import { Box } from '@mui/system';
 import { DataGrid, GridColDef, GridSelectionModel } from '@mui/x-data-grid';
-import { TiersFront } from '@/interfaces';
+
 import { Controller, useFormContext } from 'react-hook-form';
+import { TiersFront } from '@/isadom-models/tiers/tiers';
 
 const columns: GridColDef[] = [
   { field: `idTiers`, headerName: `ID`, width: 90 },

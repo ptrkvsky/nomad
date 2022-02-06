@@ -1,3 +1,4 @@
+import { TiersFront, TiersBack } from '@/isadom-models/tiers/tiers';
 import {
   BaseQueryFn,
   FetchArgs,
@@ -7,7 +8,6 @@ import {
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 
 import { tiersBackToFront } from './adapter';
-import { TiersBack, TiersFront } from '@/interfaces';
 
 interface SearchTiersParam {
   qui: string;

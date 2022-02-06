@@ -40,8 +40,6 @@ export default function MyApp(props: MyAppProps) {
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <Header />
-
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <GlobalStyles />

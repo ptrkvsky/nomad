@@ -1,0 +1,32 @@
+import { TypeProduitModel } from "../..";
+import { FamilleModel } from "../..";
+export interface ConsommableModel {
+  IDProduit: number;
+  sRefProduit: string;
+  sFKTypeProduit: string;
+  sCodeNatureProduit: string;
+  sLibelle: string;
+  sRefFabricant: string;
+  bInactif: boolean;
+  bPrevisionInactif: boolean;
+  dArretCdeInterne: string;
+  bArretCommande: boolean;
+  typeProduit: TypeProduitModel;
+  famille: FamilleModel;
+  iFKCodePriorite: number;
+  sCodePriorite: string;
+  bSuiviLot: boolean;
+  bSuiviDatePeremption: boolean;
+  bSuiviNumeroLot: boolean;
+  bSuiviSortie: boolean;
+  bKit: boolean;
+  bControleLivraison: boolean;
+  iQuantiteConfig: number;
+  iFrequenceConfig: number;
+  iFrequenceInventaire: number;
+  sFKTypeIntervention: string;
+  bInfoLivraisonProduitSubstitution: boolean;
+  bIgnoreControleConformite: boolean;
+  iMultipleCdeCatalogue: number;
+  sTypePeremption: string;
+}

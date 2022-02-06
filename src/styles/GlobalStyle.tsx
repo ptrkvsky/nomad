@@ -68,9 +68,11 @@ const GlobalStyles = () => {
         }
 
         .container {
-          max-width: 1480px;
+          width: 100%;
+          max-width: 1280px;
           margin-left: auto;
           margin-right: auto;
+          padding: 0 8px;
         }
       `}
     />

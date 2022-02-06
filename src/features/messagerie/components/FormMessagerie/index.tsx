@@ -15,6 +15,7 @@ import SelectTypeObjet from './SelectTypeObjet';
 import SelectDestinataires from './SelectDestinataires';
 import InputObjet from './InputObjet';
 import TextareaCorps from './TextareaCorps';
+import { ButtonPrimary } from '@/styles/atoms/Buttons';
 
 interface FormMessagerieProps {
   message?: any;
@@ -89,15 +90,14 @@ const FormMessagerie: FunctionComponent<FormMessagerieProps> = () => {
         <InputObjet />
         <SelectDestinataires />
         <TextareaCorps typesObjets={typesObjets} />
-        <Button
+        <ButtonPrimary
+          style={{ marginTop: `32px` }}
           disabled={isLoadingPostMessage}
-          variant="contained"
-          sx={{ marginTop: 4 }}
-          endIcon={<SendIcon />}
           type="submit"
         >
           Envoyer le message
-        </Button>
+          <SendIcon />
+        </ButtonPrimary>
       </form>
     </FormProvider>
   );

@@ -1,0 +1,32 @@
+import { TypeProduitAPI } from "../../api/TypeProduitAPI";
+import { FamilleAPI } from "../../api/FamilleAPI";
+export interface ConsommableAPI {
+  IDProduit: number;
+  sRefProduit: string;
+  sFKTypeProduit: string;
+  sCodeNatureProduit: string;
+  sLibelle: string;
+  sRefFabricant: string;
+  bInactif: boolean;
+  bPrevisionInactif: boolean;
+  dArretCdeInterne: string;
+  bArretCommande: boolean;
+  typeProduit: TypeProduitAPI;
+  famille: FamilleAPI;
+  iFKCodePriorite: number;
+  sCodePriorite: string;
+  bSuiviLot: boolean;
+  bSuiviDatePeremption: boolean;
+  bSuiviNumeroLot: boolean;
+  bSuiviSortie: boolean;
+  bKit: boolean;
+  bControleLivraison: boolean;
+  iQuantiteConfig: number;
+  iFrequenceConfig: number;
+  iFrequenceInventaire: number;
+  sFKTypeIntervention: string;
+  bInfoLivraisonProduitSubstitution: boolean;
+  bIgnoreControleConformite: boolean;
+  iMultipleCdeCatalogue: number;
+  sTypePeremption: string;
+}

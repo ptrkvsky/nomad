@@ -12,7 +12,7 @@ import { useSearchTiersMutation } from '@/services/tiers';
 import TableResult from '@/features/messagerie/components/FormDestinataires/TableResult';
 import InputQui from '@/features/messagerie/components/FormDestinataires/InputQui';
 import SelectTypeTiers from '@/features/messagerie/components/FormDestinataires/SelectTypeTiers';
-import { TiersFront } from '@/interfaces';
+import { TiersFront } from '@/isadom-models/tiers/tiers';
 
 interface FormDestinatairesValues {
   typeTiers: string;

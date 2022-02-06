@@ -2,6 +2,7 @@ import { useAppSelector } from '@/app/hooks';
 import Link from 'next/link';
 import { Button, Grid } from '@mui/material';
 import CardAppareil from './CardAppareil';
+import { ButtonPrimary } from '@/styles/atoms/Buttons';
 
 const TemplateAppareil = () => {
   const appareils = useAppSelector(
@@ -19,7 +20,7 @@ const TemplateAppareil = () => {
       Aucun appareil sélectionné <br />
       <br />
       <Link href="/recherche/appareil" passHref>
-        <Button variant="contained">Rechercher un appareil</Button>
+        <ButtonPrimary>Rechercher un appareil</ButtonPrimary>
       </Link>
     </p>
   );

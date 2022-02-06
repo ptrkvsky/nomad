@@ -1,4 +1,4 @@
-import { TiersBack, TiersFront } from '@/interfaces';
+import { TiersBack, TiersFront } from '@/isadom-models/tiers/tiers';
 
 export const tiersBackToFront = (tiers: TiersBack[]): TiersFront[] => {
   return tiers.map((tiers) => ({

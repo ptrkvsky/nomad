@@ -2,7 +2,7 @@
   "taskExplorer.showLastTasks": false,
   "workbench.colorCustomizations": {
     // "activityBar.background": "#120077",
-    "titleBar.activeBackground": "#659000",
-    "statusBar.background": "#659000"
+    "titleBar.activeBackground": "#06919d",
+    "statusBar.background": "#06919d"
   }
 }
