@@ -27,6 +27,7 @@ const getTournee = (
   build.query<FeuilleDeRouteFront, SearchParamsTournee>({
     query: ({ dateTournee, idIntervenant }) =>
       `/intervenants/${idIntervenant}/tournees/${dateTournee}`,
+    keepUnusedDataFor: 300,
     transformResponse: (response: FeuilleDeRouteAPI) => {
       return feuilleDeRouteBackToFront(response);
     },

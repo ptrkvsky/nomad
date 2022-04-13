@@ -7,6 +7,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { ButtonPrimary, ButtonGhost } from '@/styles/atoms/Buttons';
 import EditIcon from '@mui/icons-material/Edit';
+import Link from 'next/link';
 interface Props {
   rdvOuVisite: VisiteAPI | RendezVousAPI;
 }
@@ -82,32 +83,15 @@ const TourneeItem = ({ rdvOuVisite }: Props) => {
             <EditIcon />
             Modifier
           </ButtonGhost>
+
           <ButtonPrimary type="button">
             <PersonSearchIcon />
-            Dossier patient
+            <Link href={`/visites/${rdvOuVisite.ID}/appareil-configuration`}>
+              Configuration appareil
+            </Link>
           </ButtonPrimary>
         </Cta>
       </div>
-
-      {/* 
-{rdvOuVisite.tTypeVisite?.map} */}
-      {/* {data.tTypeVisite?.map((typeVisite: any) => (
-            <Appointment key={v4()}>
-              <Type>{typeVisite.sLibelle}</Type>
-              {typeVisite.tTypePrestation?.length > 0 && (
-                <Prestations>
-                  Prestations :
-                  <GridPrestations>
-                    {typeVisite.tTypePrestation?.map((typePrestation: any) => (
-                      <span>
-                        <Prestation>{typePrestation.sLibelle}</Prestation>
-                      </span>
-                    ))}
-                  </GridPrestations>
-                </Prestations>
-              )}
-            </Appointment>
-          ))} */}
     </CardTournee>
   );
 };

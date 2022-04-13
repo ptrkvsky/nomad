@@ -45,7 +45,6 @@ const Wrapper = styled.nav`
 
 export const Nav: FunctionComponent = () => {
   const router = useRouter();
-  console.log(router.pathname);
   return (
     <Wrapper>
       <ul>

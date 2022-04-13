@@ -14,7 +14,7 @@ export default function Tournee() {
   dispatch(
     setTourneeInfos({
       dateTournee,
-      idIntervenant: `462119`,
+      idIntervenant: `462118`,
     }),
   );
 
